@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>Subscribing!</p>
+    </div>
+    <div class="pianoid"></div>
+    <script>
+    tp = window["tp"] || [];
+
+    tp.pianoId.show({
+        screen:'register'
+    })
+
+    tp.push(["addHandler", "loginSuccess", function(data){
+  // Any logic required after a successful login
+        window.location.href = "http://localhost:3000/index.html"
+}]);
+
+    (function(src){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=src;var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})("https://sandbox.tinypass.com/xbuilder/experience/load?aid=bW69IEsHwA");</script>
+</body>
+</html>
