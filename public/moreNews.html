@@ -16,9 +16,9 @@
                 "authorization": "https://sandbox.tinypass.com/xbuilder/experience/executeAmp?protocol_version=1&aid=bW69IEsHwA&reader_id=READER_ID&url=SOURCE_URL&referer=DOCUMENT_REFERRER&_=RANDOM",
                 "noPingback": "true",
                 "login": {
-                    "sign-in": "http://localhost:3000/amp-login.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM&return=RETURN_URL",
-                    "sign-out": "http://localhost:3000/amp-logout.html?reader_id=READER_ID&_=RANDOM",
-                    "subscribe": "http://localhost:3000/amp-subscribe.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM"
+                    "sign-in": "https://amp-access.herokuapp.com//amp-login.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM&return=RETURN_URL",
+                    "sign-out": "https://amp-access.herokuapp.com//amp-logout.html?reader_id=READER_ID&_=RANDOM",
+                    "subscribe": "https://amp-access.herokuapp.com//amp-subscribe.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM"
                 },
                 "authorizationFallbackResponse": {
                     "error": true
@@ -27,8 +27,8 @@
         </script>
         <style amp-custom>
             body {
-                font-family: 'Noto Sans JP', sans-serif;
                 padding-left: 25px;
+                font-family: 'Noto Sans JP', sans-serif;
             }
 
             .ampImage {
@@ -413,7 +413,7 @@
 
     <div amp-access="c.showContent" amp-access-hide>Testing custom variable</div>
 
-    <div class="article"><h3>So much news, so little time. Click for more <a href="evenMoreNews.html">here!</a></h3></div>
+    <div class="article"><h3>Like what you see, more news click <a href="moreNews.html">here!</a></h3></div>
     <button amp-access="loggedIn"
   amp-access-hide
   on="tap:amp-access.login-sign-out">

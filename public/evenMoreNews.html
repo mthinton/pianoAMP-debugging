@@ -16,9 +16,9 @@
                 "authorization": "https://sandbox.tinypass.com/xbuilder/experience/executeAmp?protocol_version=1&aid=bW69IEsHwA&reader_id=READER_ID&url=SOURCE_URL&referer=DOCUMENT_REFERRER&_=RANDOM",
                 "noPingback": "true",
                 "login": {
-                    "sign-in": "http://localhost:3000/amp-login.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM&return=RETURN_URL",
-                    "sign-out": "http://localhost:3000/amp-logout.html?reader_id=READER_ID&_=RANDOM",
-                    "subscribe": "http://localhost:3000/amp-subscribe.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM"
+                    "sign-in": "https://amp-access.herokuapp.com//amp-login.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM&return=RETURN_URL",
+                    "sign-out": "https://amp-access.herokuapp.com//amp-logout.html?reader_id=READER_ID&_=RANDOM",
+                    "subscribe": "https://amp-access.herokuapp.com//amp-subscribe.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM"
                 },
                 "authorizationFallbackResponse": {
                     "error": true
@@ -413,7 +413,7 @@
 
     <div amp-access="c.showContent" amp-access-hide>Testing custom variable</div>
 
-    <div class="article"><h3>That's all the news we have for today. Click to return home <a href="index.html">here!</a></h3></div>
+    <div class="article"><h3>Like what you see, more news click <a href="moreNews.html">here!</a></h3></div>
     <button amp-access="loggedIn"
   amp-access-hide
   on="tap:amp-access.login-sign-out">
@@ -469,7 +469,7 @@
 
 
     <div class="article">
-        <h2>Is minimalism the way to go, or are we just selling ourselves short?</h2>
+        <h2>Is minimalism the way to go, or are you just selling yourself short?</h2>
         <amp-img class="ampImage" src="/images/poor_person.jpeg" alt="poor-man" height="168" width="168"></amp-img>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,/nsed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Leo integer malesuada nunc vel. Ut aliquam purus sit amet luctus venenatis lectus magna fringilla.
