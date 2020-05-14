@@ -9,6 +9,7 @@
         <script async custom-element="amp-access" src="https://cdn.ampproject.org/v0/amp-access-0.1.js"></script>
         <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
         <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 
           <script id="amp-access" type="application/json">
             {
@@ -27,6 +28,7 @@
         <style amp-custom>
             body {
                 padding-left: 25px;
+                font-family: 'Noto Sans JP', sans-serif;
             }
 
             .ampImage {
@@ -411,7 +413,7 @@
 
     <div amp-access="c.showContent" amp-access-hide>Testing custom variable</div>
 
-    <div class="article"><h3>That news was even cooler. Unfortunately that's all I have for today. CLick here to return home <a href="index.html">here!</a></h3></div>
+    <div class="article"><h3>That news was even cooler. Unfortunately that's all I have for today. Click to return home <a href="index.html">here!</a></h3></div>
     <button amp-access="loggedIn"
   amp-access-hide
   on="tap:amp-access.login-sign-out">
