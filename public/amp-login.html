@@ -8,16 +8,18 @@
 </head>
 <body>
     <div>
-        <p>Logging in Screen!</p>
+        <!-- <p>Logging in Screen!</p> -->
     </div>
     <script>
     tp = window["tp"] || [];
     tp.push(["setAid", "bW69IEsHwA"]);
     tp.push(["setEndpoint", "https://sandbox.tinypass.com/api/v3"]);
     tp.push(["setUsePianoIdUserProvider", true]);
-    // tp.push(["init", function() {
-    //     tp.amp.showLogin();
-    // }]);
+    
+    tp.push(["init", function() {
+        tp.experience.init();
+    // //     tp.amp.showLogin();
+      }]);
     (function(src){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=src;var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})("https://sandbox.tinypass.com/xbuilder/experience/load?aid=bW69IEsHwA");
     </script>
 </body>
