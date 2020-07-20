@@ -13,12 +13,12 @@
 
           <script id="amp-access" type="application/json">
             {
-                "authorization": "https://sandbox.tinypass.com/xbuilder/experience/executeAmp?protocol_version=1&aid=bW69IEsHwA&reader_id=READER_ID&url=SOURCE_URL&referer=DOCUMENT_REFERRER&_=RANDOM",
+                "authorization": "https://sandbox.tinypass.com/xbuilder/experience/executeAmp?protocol_version=1&aid=bW69IEsHwA&reader_id=READER_ID&url=SOURCE_URL&referer=DOCUMENT_REFERRER&_=RANDOM&tags=premium",
                 "noPingback": "true",
                 "login": {
-                    "sign-in": "http://localhost:3000//amp-login.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM",
-                    "sign-out": "http://localhost:3000//amp-logout.html?reader_id=READER_ID&_=RANDOM",
-                    "subscribe": "http://localhost:3000//amp-subscribe.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM"
+                    "sign-in": "https://amp-access.herokuapp.com//amp-login.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM",
+                    "sign-out": "https://amp-access.herokuapp.com//amp-logout.html?reader_id=READER_ID&_=RANDOM",
+                    "subscribe": "https://amp-access.herokuapp.com//amp-subscribe.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM"
                 },
                 "authorizationFallbackResponse": {
                     "error": true
@@ -188,9 +188,6 @@
         
             .piano-gray {
                 color: #767676;
-            }
-            .piano-blue{
-                color:#3B67B2
             }
         
             .piano-footer-sticky {
@@ -364,7 +361,7 @@
                     To continue viewing the content you love, please choose one of our subscriptions today.
                 </div>
             </div>
-            <div on="tap:piano-modal-pay-wall.hide" role="button" tabindex="0" class="piano-modal__close">
+            <div on="tap:piano-modal-reg-wall.hide" role="button" tabindex="0" class="piano-modal__close">
                 Dismiss
             </div>
         </div>
@@ -377,13 +374,10 @@
             Already a subscriber?
             <div on="tap:amp-access.login-sign-in" role="button" tabindex="0" class="piano-link">Sign in here.</div>
         </div>
+        <div on="tap:piano-modal-reg-wall.hide" role="button" tabindex="0" class="piano-modal__close">
+            Dismiss
+        </div>
     </div>
-</div>
-<div amp-access="p.showBanner" amp-access-hide id="piano-modal-banner"  >
-    <div class="piano-footer-sticky__body">
-        <span class="piano-blue">I'm changing to Seeking Alpha</span>
-    </div>
-    <div on="tap:piano-modal-banner.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div>
 </div>
 <div amp-access="p.showPageviewCount" amp-access-hide id="piano-modal-pageview-count" class="piano-footer-sticky">
     <div class="piano-footer-sticky__body">
@@ -415,27 +409,18 @@
     </div>
     <div on="tap:piano-modal-android-download.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div>
 </div>
-
+<div amp-access="p.showBanner" amp-access-hide id="piano-modal-banner" class="piano-footer-sticky" >
+    <div class="piano-footer-sticky__body">
+        <span class="piano-gray">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed dolor.</span>
+    </div>
+    <div on="tap:piano-modal-banner.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div>
+</div>
 
             <h1 id="page_title">First AMP Project</h1>
 
-            <!-- Modal Section-->
-
-<!-- <div class="myContainer">
-    <div class="myContent">
-        <div class="close">+</div>
-        <img src="https://www.samplesumo.com/sites/default/files/pictures/LogoArtwork/SampleSumo_logo_no_text_transparent_100x100.png" alt="">
-
-            <h3 class="myMeter">Are you sure</h3>
-            <h4>If so, click here!</h4>
-            <button type="submit" id="testButton" class="button myButton">Click here!</button>
-
-    </div>
-</div> -->
-
     <div amp-access="c.showContent" amp-access-hide>Testing custom variable</div>
 
-    <div class="article"><h3>Like what you see, click for premium news!<a href="premium.html">here!</a></h3></div>
+    <div class="article"><h3>Too much? We get it, click here to go back to free!<a href="index.html">here!</a></h3></div>
     <button amp-access="loggedIn"
   amp-access-hide
   on="tap:amp-access.login-sign-out">
@@ -468,9 +453,6 @@
         </p>
     </div>
 <div>
-
-
-
     <div class="article">
         <h2>What is Epicurean philosophy?</h2>
         <amp-img class="ampImage" src="/images/Rich_Men.jpeg" alt="rich-men" height="168" width="200"></amp-img>
@@ -513,5 +495,7 @@
         </p>
     </div>
 </div>
+
+
     </body>
 </html>
