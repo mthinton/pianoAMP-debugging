@@ -13,13 +13,22 @@
     <div class="pianoid"></div>
     <script>
     tp = window["tp"] || [];
+
+    tp.push(["addHandler", "loginSuccess", function(){
+        var url = window.location.href;
+        var amp = url.indexOf('amp');
+        if( amp != -1){
+            
+            console.log(data);  
+            };
+            tp.amp.login();
+    }])
+
     tp.push(["init", function() {
         tp.offer.show({offerId:'OFP0SHI610BZ'})
     }]);
 
-    tp.push(["addHandler", "loginSuccess", function(){
-    tp.amp.login();
-    }])
+
 
     tp.push(["addHandler", "checkoutComplete", function(conversion){ 
    window.close();
