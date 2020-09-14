@@ -14,9 +14,21 @@
     <script>
     tp = window["tp"] || [];
 
+    tp.push(["addHandler", "loginSuccess", function(data){
+        var url = window.location.href;
+        var amp = url.indexOf('amp');
+        if( amp != -1){
+            
+            console.log(data);  
+            };
+            tp.amp.login();
+    }])
+
     tp.push(["init", function() {
-        tp.offer.show({offerId:'OFP0SHI610BZ', templateId:'OTLBOVQP1452'})
+        tp.offer.show({offerId:'OFP0SHI610BZ', termId:['TMD0DPEP66RX']})
     }]);
+
+
 
     tp.push(["addHandler", "checkoutComplete", function(conversion){ 
    window.close();

@@ -2,6 +2,10 @@
 <html ⚡>
     <head>
         <meta charset="utf-8">
+        <meta
+        name="amp-script-src"
+        content="sha384-EMbayA87Tzt8JM6xnLO77GySiB5lsIrliQ7raAGyuMRl6kc67pCWD5kzWv4bNzKQ"
+      />
         <link rel="canonical" href="https://localhost:3000">
         <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
         <meta name="viewport" content="width=device-width">
@@ -10,15 +14,18 @@
         <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
         <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+        <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
+
 
           <script id="amp-access" type="application/json">
             {
                 "authorization": "https://sandbox.tinypass.com/xbuilder/experience/executeAmp?protocol_version=1&aid=bW69IEsHwA&reader_id=READER_ID&url=SOURCE_URL&referer=DOCUMENT_REFERRER&_=RANDOM",
                 "noPingback": "true",
                 "login": {
-                    "sign-in": "https://amp-access.herokuapp.com/amp-login.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM",
-                    "sign-out": "https://amp-access.herokuapp.com/amp-logout.html?reader_id=READER_ID&_=RANDOM",
-                    "subscribe": "https://amp-access.herokuapp.com/amp-subscribe.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM"
+                    "sign-in": "http://localhost:3000/amp-login.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM",
+                    "sign-out": "http://localhost:3000/amp-logout.html?reader_id=READER_ID&_=RANDOM",
+                    "subscribe": "http://localhost:3000/amp-subscribe.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM",
+                    "mattSubscribe": "http://localhost:3000/matt-subscribe.html?reader_id=READER_ID&url=SOURCE_URL&_=RANDOM"
                 },
                 "authorizationFallbackResponse": {
                     "error": true
@@ -26,419 +33,32 @@
             }
             
         </script>
-        <style amp-custom>
-            body {
-                padding-left: 25px;
-                font-family: 'Noto Sans JP', sans-serif;
-            }
-
-            .ampImage {
-                z-index: -2000;
-                position:relative
-            }
-            .piano-modal {
-                box-sizing: border-box;
-                padding: 0 24px 41px 24px;
-        
-                font-family: Roboto, sans-serif;
-                font-style: normal;
-                font-weight: normal;
-        
-                position: fixed;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-        
-                display: flex;
-                flex-direction: column;
-        
-                width: 100%;
-        
-                background: #FFFFFF;
-            }
-        
-            .piano-modal__top {
-                flex-grow: 1;
-                flex-shrink: 0;
-        
-                display: flex;
-                flex-direction: column;
-            }
-        
-            .piano-modal__content {
-                flex-grow: 1;
-                display: flex;
-                flex-direction: column;
-            }
-        
-            .piano-modal__header {
-                display: flex;
-                flex-grow: 1;
-                flex-shrink: 0;
-                align-items: center;
-                justify-content: center;
-            }
-        
-            .piano-modal__body {
-                margin-bottom: 12px;
-            }
-        
-            .piano-modal__footer {
-            }
-        
-            .piano-modal__image {
-                display: flex;
-                justify-content: center;
-                box-sizing: border-box;
-            }
-        
-            .piano-modal__icon-1 {
-                background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url%28%23clip0%29'%3E%3Cpath d='M0 0H72V72H0V0Z' fill='url%28%23paint0_linear%29'/%3E%3Cpath d='M54 0L108 54H0L54 0Z' transform='translate%28-36 30%29' fill='url%28%23paint1_linear%29'/%3E%3Cpath d='M54 0L108 54H0L54 0Z' transform='translate%286 42%29' fill='url%28%23paint2_linear%29'/%3E%3Ccircle cx='5' cy='5' r='5' transform='translate%2843 19%29' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear' x2='1' gradientUnits='userSpaceOnUse' gradientTransform='matrix%2872 -72 46.0328 84.3935 -23.0164 29.8033%29'%3E%3Cstop stop-color='%23D7DDEB'/%3E%3Cstop offset='1' stop-color='%237E9ACB'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear' x2='1' gradientUnits='userSpaceOnUse' gradientTransform='translate%28108%29 scale%28108 54%29 rotate%2890%29'%3E%3Cstop stop-color='white'/%3E%3Cstop offset='1' stop-color='white' stop-opacity='0'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint2_linear' x2='1' gradientUnits='userSpaceOnUse' gradientTransform='translate%28108%29 scale%28108 54%29 rotate%2890%29'%3E%3Cstop stop-color='white'/%3E%3Cstop offset='1' stop-color='white' stop-opacity='0'/%3E%3C/linearGradient%3E%3CclipPath id='clip0'%3E%3Crect width='72' height='72' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
-                width: 72px;
-                height: 72px;
-            }
-        
-            .piano-modal__icon-2 {
-                background-image: url("data:image/svg+xml,%3Csvg width='76' height='76' viewBox='0 0 76 76' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 0H54L76 22V54L54 76H22L0 54V22L22 0Z' fill='url%28%23paint0_linear%29' /%3E%3Cpath d='M42 13C42 13 32.598 26 21 26C9.40202 26 0 13 0 13C0 13 9.40202 0 21 0C32.598 0 42 13 42 13Z' transform='translate%2817 25%29' fill='url%28%23paint1_linear%29' /%3E%3Cellipse cx='6.53184' cy='6.52312' rx='6.53184' ry='6.52312' transform='translate%2830.9536 44.9717%29 rotate%28-89.5611%29' fill='white' /%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear' x2='1' gradientUnits='userSpaceOnUse' gradientTransform='matrix%2876 -76 48.5902 89.082 -24.2951 31.459%29'%3E%3Cstop stop-color='%23D7DDEB' /%3E%3Cstop offset='1' stop-color='%237E9ACB' /%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear' x2='1' gradientUnits='userSpaceOnUse' gradientTransform='matrix%28-42 42 -42 -188.346 63 86.173%29'%3E%3Cstop stop-color='white' /%3E%3Cstop offset='1' stop-color='white' stop-opacity='0' /%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
-                width: 76px;
-                height: 76px;
-            }
-        
-            .piano-modal__title {
-                line-height: 24px;
-                font-size: 16px;
-                text-align: center;
-                letter-spacing: 0.01em;
-        
-                color: #323232;
-            }
-        
-            .piano-modal__description {
-                margin-top: 9px;
-        
-                line-height: 24px;
-                font-size: 14px;
-                text-align: center;
-                letter-spacing: 0.01em;
-        
-                color: rgba(50, 50, 50, 0.6);
-            }
-        
-            .piano-modal__signin {
-                height: 42px;
-                line-height: 42px;
-        
-                font-size: 12px;
-                text-align: center;
-                letter-spacing: 0.02em;
-        
-                color: #767676;
-            }
-        
-            .piano-modal__close {
-                height: 40px;
-        
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-        
-                display: flex;
-                align-items: center;
-                justify-content: center;
-        
-                cursor: pointer;
-        
-                line-height: 26px;
-                font-size: 12px;
-        
-                border-top: 1px solid rgba(50, 50, 50, 0.08);
-                background: #FFFFFF;
-        
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-                color: #767676;
-            }
-        
-            .piano-button {
-                font-weight: 500;
-                line-height: 24px;
-                font-size: 11px;
-                text-align: center;
-                letter-spacing: 0.14em;
-                text-transform: uppercase;
-        
-                color: #FFFFFF;
-                border-radius: 2px;
-                background: #3B67B2;
-        
-                padding: 12px 0;
-            }
-        
-            .piano-link {
-                color: #3B67B2;
-                text-decoration: none;
-                padding: 0;
-                border: none;
-                cursor: pointer;
-                background: #FFFFFF;
-                display: inline;
-                padding: 8px;
-            }
-        
-            .piano-gray {
-                color: #767676;
-            }
-            .piano-blue{
-                color:#3B67B2
-            }
-        
-            .piano-footer-sticky {
-                width: 100%;
-        
-                font-family: Roboto, sans-serif;
-                font-style: normal;
-                font-weight: normal;
-        
-                line-height: 24px;
-                font-size: 14px;
-                text-align: center;
-                letter-spacing: 0.01em;
-        
-                display: flex;
-        
-                position: fixed;
-                bottom: 0;
-                background: #FFFFFF;
-            }
-        
-            .piano-footer-sticky__body {
-                text-align: center;
-                margin: 18px 0 18px 16px;
-                flex-grow: 1;
-                flex-shrink: 1;
-            }
-        
-            .piano-footer-sticky__arrow {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-        
-                width: 53px;
-                border-left: 1px solid rgba(50, 50, 50, 0.08);
-        
-                background: url("data:image/svg+xml,%3Csvg width='5' height='10' viewBox='0 0 5 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.4' fill-rule='evenodd' clip-rule='evenodd' d='M5 5L0.5 10L0 9.5L4.05005 5L0 0.5L0.499878 0L5 5Z' fill='%23323232'/%3E%3C/svg%3E") no-repeat center center;
-            }
-        
-            .piano-footer-sticky__close {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-        
-                width: 53px;
-                border-left: 1px solid rgba(50, 50, 50, 0.08);
-        
-                background: url("data:image/svg+xml,%3Csvg width='12' height='13' viewBox='0 0 12 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.4' fill-rule='evenodd' clip-rule='evenodd' d='M11.9998 11.1768L11.1742 12.0013L6.3986 7.22567L1.6242 12.0013L0.799805 11.1768L5.57541 6.40126L0.799805 1.62567L1.62541 0.800049L6.40101 5.57567L11.1754 0.801257L11.9998 1.62567L7.22301 6.40126L11.9998 11.1768Z' fill='%23323232'/%3E%3C/svg%3E%0A") no-repeat center center;
-        
-                cursor: pointer;
-            }
-        
-            .piano-footer-sticky__lines {
-                width: 24px;
-                display: flex;
-                align-items: center;
-                flex-shrink: 0;
-                padding-left: 7px;
-                box-sizing: border-box;
-        
-                background: url("data:image/svg+xml, %3Csvg width='4' height='36' viewBox='0 0 4 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='1' transform='translate%280 36%29 rotate%28-90%29' fill='%23323232' fill-opacity='0.16'/%3E%3Crect width='36' height='1' transform='translate%283 36%29 rotate%28-90%29' fill='%23323232' fill-opacity='0.16'/%3E%3C/svg%3E ") no-repeat 7px 24px;
-            }
-        
-            @media screen and (orientation: landscape) {
-                .piano-modal__top {
-                    flex-direction: row;
-                    align-items: center;
-                }
-        
-                .piano-modal__content {
-                    flex-direction: row;
-                    align-items: flex-start;
-                }
-        
-                .piano-modal__image {
-                    margin-right: 20px;
-                }
-        
-                .piano-modal__title {
-                    text-align: left;
-                }
-        
-                .piano-modal__header {
-                    margin-top: 5px;
-                }
-        
-                .piano-modal__description {
-                    text-align: left;
-                }
-            }
-        </style>
+<style amp-custom> .ampImage{z-index: -1} .piano-modal { box-sizing: border-box; padding: 0 24px 41px 24px; font-family: Roboto, sans-serif; font-style: normal; font-weight: normal; position: fixed; top: 0; left: 0; bottom: 0; right: 0; display: flex; flex-direction: column; width: 100%; background: #FFFFFF; } .piano-modal__top { flex-grow: 1; flex-shrink: 0; display: flex; flex-direction: column; } .piano-modal__content { flex-grow: 1; display: flex; flex-direction: column; } .piano-modal__header { display: flex; flex-grow: 1; flex-shrink: 0; align-items: center; justify-content: center; } .piano-modal__body { margin-bottom: 12px; } .piano-modal__footer { } .piano-modal__image { display: flex; justify-content: center; box-sizing: border-box; } .piano-modal__icon-1 { background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url%28%23clip0%29'%3E%3Cpath d='M0 0H72V72H0V0Z' fill='url%28%23paint0_linear%29'/%3E%3Cpath d='M54 0L108 54H0L54 0Z' transform='translate%28-36 30%29' fill='url%28%23paint1_linear%29'/%3E%3Cpath d='M54 0L108 54H0L54 0Z' transform='translate%286 42%29' fill='url%28%23paint2_linear%29'/%3E%3Ccircle cx='5' cy='5' r='5' transform='translate%2843 19%29' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear' x2='1' gradientUnits='userSpaceOnUse' gradientTransform='matrix%2872 -72 46.0328 84.3935 -23.0164 29.8033%29'%3E%3Cstop stop-color='%23D7DDEB'/%3E%3Cstop offset='1' stop-color='%237E9ACB'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear' x2='1' gradientUnits='userSpaceOnUse' gradientTransform='translate%28108%29 scale%28108 54%29 rotate%2890%29'%3E%3Cstop stop-color='white'/%3E%3Cstop offset='1' stop-color='white' stop-opacity='0'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint2_linear' x2='1' gradientUnits='userSpaceOnUse' gradientTransform='translate%28108%29 scale%28108 54%29 rotate%2890%29'%3E%3Cstop stop-color='white'/%3E%3Cstop offset='1' stop-color='white' stop-opacity='0'/%3E%3C/linearGradient%3E%3CclipPath id='clip0'%3E%3Crect width='72' height='72' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E"); width: 72px; height: 72px; } .piano-modal__icon-2 { background-image: url("data:image/svg+xml,%3Csvg width='76' height='76' viewBox='0 0 76 76' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 0H54L76 22V54L54 76H22L0 54V22L22 0Z' fill='url%28%23paint0_linear%29' /%3E%3Cpath d='M42 13C42 13 32.598 26 21 26C9.40202 26 0 13 0 13C0 13 9.40202 0 21 0C32.598 0 42 13 42 13Z' transform='translate%2817 25%29' fill='url%28%23paint1_linear%29' /%3E%3Cellipse cx='6.53184' cy='6.52312' rx='6.53184' ry='6.52312' transform='translate%2830.9536 44.9717%29 rotate%28-89.5611%29' fill='white' /%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear' x2='1' gradientUnits='userSpaceOnUse' gradientTransform='matrix%2876 -76 48.5902 89.082 -24.2951 31.459%29'%3E%3Cstop stop-color='%23D7DDEB' /%3E%3Cstop offset='1' stop-color='%237E9ACB' /%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear' x2='1' gradientUnits='userSpaceOnUse' gradientTransform='matrix%28-42 42 -42 -188.346 63 86.173%29'%3E%3Cstop stop-color='white' /%3E%3Cstop offset='1' stop-color='white' stop-opacity='0' /%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"); width: 76px; height: 76px; } .piano-modal__title { line-height: 24px; font-size: 16px; text-align: center; letter-spacing: 0.01em; color: #323232; } .piano-modal__description { margin-top: 9px; line-height: 24px; font-size: 14px; text-align: center; letter-spacing: 0.01em; color: rgba(50, 50, 50, 0.6); } .piano-modal__signin { height: 42px; line-height: 42px; font-size: 12px; text-align: center; letter-spacing: 0.02em; color: #767676; } .piano-modal__close { height: 40px; position: absolute; bottom: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; line-height: 26px; font-size: 12px; border-top: 1px solid rgba(50, 50, 50, 0.08); background: #FFFFFF; letter-spacing: 0.1em; text-transform: uppercase; color: #767676; } .piano-button { font-weight: 500; line-height: 24px; font-size: 11px; text-align: center; letter-spacing: 0.14em; text-transform: uppercase; color: #FFFFFF; border-radius: 2px; background: #3B67B2; padding: 12px 0; } .piano-link { color: #3B67B2; text-decoration: none; padding: 0; border: none; cursor: pointer; background: #FFFFFF; display: inline; padding: 8px; } .piano-gray { color: #767676; } .piano-footer-sticky { width: 100%; font-family: Roboto, sans-serif; font-style: normal; font-weight: normal; line-height: 24px; font-size: 14px; text-align: center; letter-spacing: 0.01em; display: flex; position: fixed; bottom: 0; background: #FFFFFF; } .piano-footer-sticky__body { text-align: left; margin: 18px 0 18px 16px; flex-grow: 1; flex-shrink: 1; } .piano-footer-sticky__arrow { display: flex; align-items: center; justify-content: center; width: 53px; border-left: 1px solid rgba(50, 50, 50, 0.08); background: url("data:image/svg+xml,%3Csvg width='5' height='10' viewBox='0 0 5 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.4' fill-rule='evenodd' clip-rule='evenodd' d='M5 5L0.5 10L0 9.5L4.05005 5L0 0.5L0.499878 0L5 5Z' fill='%23323232'/%3E%3C/svg%3E") no-repeat center center; } .piano-footer-sticky__close { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 53px; border-left: 1px solid rgba(50, 50, 50, 0.08); background: url("data:image/svg+xml,%3Csvg width='12' height='13' viewBox='0 0 12 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.4' fill-rule='evenodd' clip-rule='evenodd' d='M11.9998 11.1768L11.1742 12.0013L6.3986 7.22567L1.6242 12.0013L0.799805 11.1768L5.57541 6.40126L0.799805 1.62567L1.62541 0.800049L6.40101 5.57567L11.1754 0.801257L11.9998 1.62567L7.22301 6.40126L11.9998 11.1768Z' fill='%23323232'/%3E%3C/svg%3E%0A") no-repeat center center; cursor: pointer; } .piano-footer-sticky__lines { width: 24px; display: flex; align-items: center; flex-shrink: 0; padding-left: 7px; box-sizing: border-box; background: url("data:image/svg+xml, %3Csvg width='4' height='36' viewBox='0 0 4 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='1' transform='translate%280 36%29 rotate%28-90%29' fill='%23323232' fill-opacity='0.16'/%3E%3Crect width='36' height='1' transform='translate%283 36%29 rotate%28-90%29' fill='%23323232' fill-opacity='0.16'/%3E%3C/svg%3E ") no-repeat 7px 24px; } @media screen and (orientation: landscape) { .piano-modal__top { flex-direction: row; align-items: center; } .piano-modal__content { flex-direction: row; align-items: flex-start; } .piano-modal__image { margin-right: 20px; } .piano-modal__title { text-align: left; } .piano-modal__header { margin-top: 5px; } .piano-modal__description { text-align: left; } } </style>
         </head>
 <body>
-<div amp-access="p.showPageviewExpired" amp-access-hide id="piano-modal-pageview-expired" class="piano-modal">
-    <div class="piano-modal__top">
-        <div class="piano-modal__content">
-            <div class="piano-modal__header">
-                <div class="piano-modal__image">
-                    <i class="piano-modal__icon-2"></i>
-                </div>
-            </div>
-            <div class="piano-modal__body">
-                <div class="piano-modal__title">
-                    You have used all of your free pageviews.
-                </div>
-                <div class="piano-modal__description">
-                    Please subscribe to access more content.
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="piano-modal__footer">
-        <div class="piano-button piano-modal__button" on="tap:amp-access.login-subscribe" role="button" tabindex="0">
-            subscribe
-        </div>
-        <div class="piano-modal__signin">
-            Already a subscriber?
-            <div on="tap:amp-access.login-sign-in" role="button" tabindex="0" class="piano-link">Sign in here.</div>
-        </div>
-    </div>
-    <div on="tap:piano-modal-pageview-expired.hide" role="button" tabindex="0" class="piano-modal__close">
-        Dismiss
-    </div>
-</div>
-<div amp-access="p.showRegWall AND NOT loggedIn" amp-access-hide id="piano-modal-reg-wall" class="piano-modal">
-    <div class="piano-modal__top">
-        <div class="piano-modal__content">
-            <div class="piano-modal__header">
-                <div class="piano-modal__image">
-                    <i class="piano-modal__icon-1"></i>
-                </div>
-            </div>
-            <div class="piano-modal__body">
-                <div class="piano-modal__title">
-                    Please register to access this content.
-                </div>
-                <div class="piano-modal__description">
-                    To continue viewing the content you love, please sign in or create a new account
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="piano-modal__footer">
-        <div class="piano-button piano-modal__button" on="tap:amp-access.login-subscribe" role="button" tabindex="0">
-            subscribe
-        </div>
-        <div class="piano-modal__signin">
-            Already a subscriber?
-            <div on="tap:amp-access.login-sign-in" role="button" tabindex="0" class="piano-link">Sign in here.</div>
-        </div>
-    </div>
-    <div on="tap:piano-modal-reg-wall.hide" role="button" tabindex="0" class="piano-modal__close">
-        Dismiss
-    </div>
-</div>
-<div amp-access="p.showPayWall" amp-access-hide id="piano-modal-pay-wall" class="piano-modal">
-    <div class="piano-modal__top">
-        <div class="piano-modal__content">
-            <div class="piano-modal__header">
-                <div class="piano-modal__image">
-                    <i class="piano-modal__icon-1"></i>
-                </div>
-            </div>
-            <div class="piano-modal__body">
-                <div class="piano-modal__title">
-                    You must subscribe to access this content.
-                </div>
-                <div class="piano-modal__description">
-                    To continue viewing the content you love, please choose one of our subscriptions today.
-                </div>
-            </div>
-            <div on="tap:piano-modal-pay-wall.hide" role="button" tabindex="0" class="piano-modal__close">
-                Dismiss
-            </div>
-        </div>
-    </div>
-    <div class="piano-modal__footer">
-        <div class="piano-button piano-modal__button" on="tap:amp-access.login-subscribe" role="button" tabindex="0">
-            subscribe
-        </div>
-        <div class="piano-modal__signin">
-            Already a subscriber?
-            <div on="tap:amp-access.login-sign-in" role="button" tabindex="0" class="piano-link">Sign in here.</div>
-        </div>
-    </div>
-</div>
-<div amp-access="p.showBanner" amp-access-hide id="piano-modal-banner"  >
-    <div class="piano-footer-sticky__body">
-        <span class="piano-blue">I'm changing to Seeking Alpha</span>
-    </div>
-    <div on="tap:piano-modal-banner.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div>
-</div>
-<div amp-access="p.showPageviewCount" amp-access-hide id="piano-modal-pageview-count" class="piano-footer-sticky">
-    <div class="piano-footer-sticky__body">
-        <template amp-access-template type="amp-mustache">
-            <span class="piano-gray">You have</span> {{cm.viewsLeft}} pageviews
-            <span class="piano-gray">remaining this month.</span>
-            <span class="piano-link" on="tap:amp-access.login-subscribe" role="button" tabindex="0">Subscribe</span>
-            <span class="piano-gray">for unlimited access.</span>
-        </template>
-    </div>
-    <div on="tap:piano-modal-pageview-count.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div>
-</div>
-<div amp-access="p.showSubscribe" amp-access-hide id="piano-modal-subscribe" class="piano-footer-sticky">
-    <div class="piano-footer-sticky__body" on="tap:amp-access.login-subscribe" role="button" tabindex="0">
-        <span class="piano-link">Subscribe now.</span> Get 50% off for one year.
-    </div>
-    <div on="tap:piano-modal-subscribe.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div>
-</div>
-<div amp-access="p.showiOSDownload" amp-access-hide id="piano-modal-ios-download" class="piano-footer-sticky">
-    <div class="piano-footer-sticky__body">
-        Download Our News app on
-        <a href="https://itunes.apple.com/us/app/the-economist-classic-us/id444518531">App Store</a>
-    </div>
-    <div on="tap:piano-modal-ios-download.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div>
-</div>
-<div amp-access="p.showAndroidDownload" amp-access-hide id="piano-modal-android-download" class="piano-footer-sticky">
-    <div class="piano-footer-sticky__body">
-        Download Our News app on <a href="https://play.google.com/store/apps/details?id=uk.co.economist">Google Play</a>
-    </div>
-    <div on="tap:piano-modal-android-download.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div>
-</div>
+<div amp-access="p.showPageviewExpired" amp-access-hide id="piano-modal-pageview-expired" class="piano-modal"> <div class="piano-modal__top"> <div class="piano-modal__content"> <div class="piano-modal__header"> <div class="piano-modal__image"> <i class="piano-modal__icon-2"></i> </div> </div> <div class="piano-modal__body"> <div class="piano-modal__title"> You have used all of your free pageviews. </div> <div class="piano-modal__description"> Please subscribe to access more content. </div> </div> </div> </div> <div class="piano-modal__footer"> <div class="piano-button piano-modal__button" on="tap:amp-access.login-subscribe" role="button" tabindex="0"> subscribe </div> <div class="piano-modal__signin"> Already a subscriber? <div on="tap:amp-access.login-sign-in" role="button" tabindex="0" class="piano-link">Sign in here.</div> </div> </div> <div on="tap:piano-modal-pageview-expired.hide" role="button" tabindex="0" class="piano-modal__close"> Dismiss </div> </div> <div amp-access="p.showRegWall AND NOT loggedIn" amp-access-hide id="piano-modal-reg-wall" class="piano-modal"> <div class="piano-modal__top"> <div class="piano-modal__content"> <div class="piano-modal__header"> <div class="piano-modal__image"> <i class="piano-modal__icon-1"></i> </div> </div> <div class="piano-modal__body"> <div class="piano-modal__title"> Please register to access this content. </div> <div class="piano-modal__description"> To continue viewing the content you love, please sign in or create a new account </div> </div> </div> </div> <div class="piano-modal__footer"> <div class="piano-button piano-modal__button" on="tap:amp-access.login-subscribe" role="button" tabindex="0"> subscribe </div> <div class="piano-modal__signin"> Already a subscriber? <div on="tap:amp-access.login-sign-in" role="button" tabindex="0" class="piano-link">Sign in here.</div> </div> </div> <div on="tap:piano-modal-reg-wall.hide" role="button" tabindex="0" class="piano-modal__close"> Dismiss </div> </div> <div amp-access="p.showPayWall" amp-access-hide id="piano-modal-pay-wall" class="piano-modal"> <div class="piano-modal__top"> <div class="piano-modal__content"> <div class="piano-modal__header"> <div class="piano-modal__image"> <i class="piano-modal__icon-1"></i> </div> </div> <div class="piano-modal__body"> <div class="piano-modal__title"> You must subscribe to access this content. </div> <div class="piano-modal__description"> To continue viewing the content you love, please choose one of our subscriptions today. </div> </div> </div> </div> <div class="piano-modal__footer"> <div class="piano-button piano-modal__button" on="tap:amp-access.login-subscribe" role="button" tabindex="0"> subscribe </div> <div class="piano-modal__signin"> Already a subscriber? <div on="tap:amp-access.login-sign-in" role="button" tabindex="0" class="piano-link">Sign in here.</div> </div> </div> </div> <div amp-access="p.showPageviewCount" amp-access-hide id="piano-modal-pageview-count" class="piano-footer-sticky"> <div class="piano-footer-sticky__body"> <template amp-access-template type="amp-mustache"> <span class="piano-gray">You have</span> {{cm.viewsLeft}} pageviews <span class="piano-gray">remaining this month.</span> <span class="piano-link" on="tap:amp-access.login-subscribe" role="button" tabindex="0">Subscribe</span> <span class="piano-gray">for unlimited access.</span> </template> </div> <div on="tap:piano-modal-pageview-count.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div> </div> <div amp-access="p.showSubscribe" amp-access-hide id="piano-modal-subscribe" class="piano-footer-sticky"> <div class="piano-footer-sticky__body" on="tap:amp-access.login-subscribe" role="button" tabindex="0"> <span class="piano-link">Subscribe now.</span> Get 50% off for one year. </div> <div on="tap:piano-modal-subscribe.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div> </div> <div amp-access="p.showiOSDownload" amp-access-hide id="piano-modal-ios-download" class="piano-footer-sticky"> <div class="piano-footer-sticky__body"> Download Our News app on <a href="https://itunes.apple.com/us/app/the-economist-classic-us/id444518531">App Store</a> </div> <div on="tap:piano-modal-ios-download.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div> </div> <div amp-access="p.showAndroidDownload" amp-access-hide id="piano-modal-android-download" class="piano-footer-sticky"> <div class="piano-footer-sticky__body"> Download Our News app on <a href="https://play.google.com/store/apps/details?id=uk.co.economist">Google Play</a> </div> <div on="tap:piano-modal-android-download.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div> </div> <div amp-access="p.showBanner" amp-access-hide id="piano-modal-banner" class="piano-footer-sticky"> <div class="piano-footer-sticky__body"> <span class="piano-gray">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed dolor.</span> </div> <div on="tap:piano-modal-banner.hide" role="button" tabindex="0" class="piano-footer-sticky__close"></div> </div>
 
 
-            <h1 id="page_title">First AMP Project</h1>
 
-            <!-- Modal Section-->
-
-<!-- <div class="myContainer">
+            <!-- Modal Section
+<div amp-access="c.showContent">
+<div class="myContainer">
     <div class="myContent">
-        <div class="close">+</div>
-        <img src="https://www.samplesumo.com/sites/default/files/pictures/LogoArtwork/SampleSumo_logo_no_text_transparent_100x100.png" alt="">
+        <div class="close closer">+</div>
+        <amp-img class="myImage" src="https://www.samplesumo.com/sites/default/files/pictures/LogoArtwork/SampleSumo_logo_no_text_transparent_100x100.png" width="100" height="100" alt=""></amp-img>
 
             <h3 class="myMeter">Are you sure</h3>
             <h4>If so, click here!</h4>
-            <button type="submit" id="testButton" class="button myButton">Click here!</button>
+            <button on="tap:amp-access.login-subscribe" type="submit" id="testButton" class="closer button myButton">Click here!</button>
 
     </div>
-</div> -->
+</div>
+</div>-->
+<h1 id="page_title">First AMP Project</h1>
 
-    <div amp-access="c.showContent" amp-access-hide>Testing custom variable</div>
-
-    <div class="article"><h3>Like what you see, click for premium news!<a href="premium.html">here!</a></h3></div>
-    <button amp-access="loggedIn"
-  amp-access-hide
+    <button 
+    amp-access="loggedIn"
+    amp-access-hide
   on="tap:amp-access.login-sign-out">
   Logout
 </button>
@@ -448,7 +68,8 @@
   Login
 </button>
 <button on="tap:amp-access.login-subscribe">Subscribe</button>
-<a href="http://localhost:3000/articles.html">Articles</a>
+<button on="tap:amp-access.login-mattSubscribe">Subscribe</button>
+<button amp-access="c.custom1 AND c.custom2" amp-access-hide on="tap:amp-access.login-mattSubscribe">Subscribe Matt</button>
 
     <div class="article">
             <h2>Will we ever have flying cars?</h2>
@@ -515,5 +136,19 @@
         </p>
     </div>
 </div>
+<amp-script width="200" height="100" script="hello-world">
+    
+  </amp-script>
+  <script id="hello-world" type="application/javascript" target="amp-script">
+  const btn = document.getElementsByClassName('closer')[0];
+  const btn1 = document.getElementsByClassName('closer')[1];
+  btn.addEventListener('click', () => {
+    document.getElementsByClassName('myContainer')[0].style.display = 'none';
+  });
+  btn1.addEventListener('click', () => {
+    document.getElementsByClassName('myContainer')[0].style.display = 'none';
+  });
+
+</script>
     </body>
 </html>
