@@ -14,17 +14,10 @@
     <script>
     tp = window["tp"] || [];
 
-    var url = (window.location != window.parent.location) ? document.referrer : document.location.href
-    console.log(url);
-
     tp.push(["addHandler", "loginSuccess", function(data){
-        function myFunction() {
-            parent.postMessage('Matt', 'http://localhost:3000/index.html');
-        }
-        myFunction();
         tp.amp.login({
              userState: {
-                "userName": "Matt",
+                "firstName": data.params.firstName,
      }
         });
     }])
